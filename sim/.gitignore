@@ -1,0 +1,4 @@
+*.o
+cpu16sim
+cpu16sim.exe
+*.trace

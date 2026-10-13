@@ -1,0 +1,14 @@
+# Simulation outputs
+work/
+transcript
+*.wlf
+*.cr.mti
+
+# Compiled files
+*.exe
+*.o
+*.obj
+
+# Editor and Python files
+.vscode/
+__pycache__/
