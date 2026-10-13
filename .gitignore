@@ -3,6 +3,7 @@ work/
 transcript
 *.wlf
 *.cr.mti
+*.mpf
 
 # Compiled files
 *.exe
