@@ -42,11 +42,11 @@ module decoder (
         state_halt    = '0;
         dmem_write_enabled = '0;
         writeback_from_mem = '0;
-        is_bne = '0;
-        is_bqe = '0;
-        is_lui = '0;
-        is_jal = 0;
-        is_jalr = 0;
+        is_bne  = '0;
+        is_bqe  = '0;
+        is_lui  = '0;
+        is_jal  = '0;
+        is_jalr = '0;
         
 
 
@@ -54,46 +54,7 @@ module decoder (
             3'b000: begin 
                 alu_op = instruction[6:3];
                 case (instruction[6:3])
-                    4'b0000: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0000;
-                    end
-                    4'b0001: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0001;
-                    end 
-                    4'b0010: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0010;
-                    end
-                    4'b0100: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0100;
-                    end
-                    4'b0101: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0101;
-                    end
-                    4'b0110: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0110;
-                    end
-                    4'b0111: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b0111;
-                    end
-                    4'b1000: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b1000;
-                    end
-                    4'b1001: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b1001;
-                    end
-                    4'b1010: begin 
-                        write_enabled = 1'b1;
-                        alu_op = 4'b1010;
-                    end
+                    
                     4'b1100: begin 
                         is_jalr = 1;
                         write_enabled = 1;
@@ -101,6 +62,10 @@ module decoder (
                     4'b1101: begin 
                         state_halt = '1;
                         write_enabled = '0;
+                    end
+                    default: begin
+                        alu_op = instruction[6:3];
+                        write_enabled = '1;
                     end
 
                 endcase
@@ -114,7 +79,6 @@ module decoder (
             end
 
             3'b010: begin //LW
-                alu_op = 4'b0000;
                 alu_src_imm = 1;
                 alu_imm = {{9{instruction[6]}},{instruction[6:0]}};
                 write_enabled = 1;
@@ -123,7 +87,6 @@ module decoder (
             end
 
             3'b011: begin //SW
-                alu_op = 4'b0000;
                 alu_src_imm = 1;
                 alu_imm = {{9{instruction[6]}},{instruction[6:0]}};
                 dmem_write_enabled = 1;
@@ -160,9 +123,6 @@ module decoder (
                 
 
             end
-
-
-
 
         endcase
     end 

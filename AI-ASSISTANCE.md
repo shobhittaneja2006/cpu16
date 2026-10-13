@@ -125,3 +125,13 @@ integer promotion in bitwise expressions, I rewrote the decode masks" is a real 
 ## C++ test harness assistance — 26 September 2026
 
 Due to my limited exposure to C++ and to save time, I explicitly requested AI assistance with `sim/main.cpp`. AI wrote the self-test checks and expected-value calculations, retained the program-loading/trace runner, improved argument validation, and supplied a sum-array demonstration and run instructions. These C++ tests are AI-assisted, including their reference logic; the earlier general statement that test checks are mine does not apply to this suite. I am responsible for reviewing and understanding the tests. Passing them provides useful evidence, not a proof that the implementation and specification contain no shared mistakes.
+
+## Architecture and RTL
+
+I made architectural choices with AI explanations of instruction encoding, register organisation, memory addressing and design trade-offs.
+
+AI provided datapath and control-table guidance, explained SystemVerilog concepts, reviewed my RTL and suggested corrections.
+
+## SystemVerilog Testbenches
+
+AI helped with testbench scaffolding, directed test cases and expected-result checks, including CPU instruction tests.
